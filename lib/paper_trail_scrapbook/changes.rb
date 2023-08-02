@@ -31,6 +31,8 @@ module PaperTrailScrapbook
       story =
         changes
         .map { |k, v| digest(k, v) }
+        .compact
+        .join("\n")
 
       case PaperTrailScrapbook.config.format
       when :json
@@ -55,8 +57,8 @@ module PaperTrailScrapbook
 
     private
 
-    def polymorphic?(x)
-      x.to_s.start_with?(POLYMORPH_BT_INDICATOR)
+    def polymorphic?(key)
+      key.to_s.start_with?(POLYMORPH_BT_INDICATOR)
     end
 
     def digest(key, values)
@@ -107,14 +109,17 @@ module PaperTrailScrapbook
       if latest_class.nil? && create?
         # try the db default class
         # for creates where the object changes do not specify this it
-        # is most likely because the default ==  type selected so
+        # is most likely because the default == type selected so
         # the default was not changed and therefore is not in
         # object changes
-        orig_instance = Object.const_get(version.item_type.classify).new
-        latest_class  = orig_instance[ref.to_sym]
+        latest_class = orig_instance[ref.to_sym]
       end
 
       Object.const_get(latest_class.classify)
+    end
+
+    def orig_instance
+      Object.const_get(version.item_type.classify).new
     end
 
     def assoc_klass(name, options = {})
