@@ -27,7 +27,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake', '~> 13.0.1'
 
   # Why `railties`? Possibly used by `spec/dummy_app` boot up?
-  gem.add_development_dependency 'railties', '>= 5.2.3'
+  gem.add_development_dependency 'railties', '>= 7.0.0'
 
   gem.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.7'
   gem.add_development_dependency 'database_cleaner'
