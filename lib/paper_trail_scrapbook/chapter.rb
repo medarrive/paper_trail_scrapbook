@@ -20,7 +20,18 @@ module PaperTrailScrapbook
       updates = changes
       return unless tell_story?(updates)
 
-      [preface, (updates unless destroy?)].compact.join("\n")
+      chapter_story = [preface, (updates unless destroy?)]
+
+      case PaperTrailScrapbook.config.format
+      when :json
+        # Return the Array of changes for JSON packaging
+        chapter_story
+      when :markdown
+        chapter_story.compact.join("\n")
+      else
+        PaperTrailScrapbook.logger.debug("Unknown formatting #{PaperTrailScrapbook.config.format} default to :markdown")
+        chapter_story.compact.join("\n")
+      end
     end
 
     private
