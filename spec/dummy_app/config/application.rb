@@ -14,6 +14,7 @@ module Dummy
     config.filter_parameters += [:password]
     config.active_support.escape_html_entities_in_json = true
     config.active_support.test_order = :sorted
+    config.active_record.legacy_connection_handling = false
 
     # Disable assets in rails 4.2. In rails 5, config does not respond to
     # assets, probably because it was moved out of railties to some other gem,
