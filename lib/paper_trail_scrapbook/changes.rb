@@ -147,12 +147,11 @@ module PaperTrailScrapbook
 
     def changes
       @changes ||= if object_changes
-                     YAML
-                       .load(object_changes)
-                       .except(*PaperTrailScrapbook.config.scrub_columns)
-                   else
-                     {}
-                   end
+                      YAML.unsafe_load(object_changes)
+                        .except(*PaperTrailScrapbook.config.scrub_columns)
+                    else
+                      {}
+                    end
     end
   end
 end
