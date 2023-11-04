@@ -1,7 +1,7 @@
 AllCops:
   DisabledByDefault: false
-  TargetRubyVersion: 2.7
-  TargetRailsVersion: 4.0
+  TargetRubyVersion: 3.1.4
+  TargetRailsVersion: 7
   DisplayCopNames: true
   Exclude:
     - 'db/**/*'

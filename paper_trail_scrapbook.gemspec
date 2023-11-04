@@ -15,10 +15,10 @@ Gem::Specification.new do |gem|
   gem.license     = 'MIT'
 
   gem.required_rubygems_version = '>= 1.3.6'
-  gem.required_ruby_version = '>= 2.6'
+  gem.required_ruby_version = '>= 3.1.3'
 
   # Rails does not follow semver, makes breaking changes in minor versions.
-  gem.add_dependency 'activerecord', '~> 6.1.7.1'
+  gem.add_dependency 'activerecord', '~> 7.0.0'
   gem.add_dependency 'adamantium'
   gem.add_dependency 'concord'
   gem.add_dependency 'paper_trail', ['>= 11', '< 13']
@@ -27,7 +27,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake', '~> 13.0.1'
 
   # Why `railties`? Possibly used by `spec/dummy_app` boot up?
-  gem.add_development_dependency 'railties', '>= 5.2.3'
+  gem.add_development_dependency 'railties', '>= 7.0.0'
 
   gem.add_development_dependency 'codeclimate-test-reporter', '~> 1.0.7'
   gem.add_development_dependency 'database_cleaner'
@@ -40,5 +40,4 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rubocop'
   gem.add_development_dependency 'rubocop-rspec'
   gem.add_development_dependency 'simplecov'
-  gem.add_development_dependency 'timecop', '~> 0.8.0'
 end

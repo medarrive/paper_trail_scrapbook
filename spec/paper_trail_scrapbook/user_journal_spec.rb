@@ -17,13 +17,13 @@ module PaperTrailScrapbook
     let(:changes) { 'made the following changes:' }
     let(:b_changes) { 'made the following Book changes:' }
 
-    let(:book) { Book.create!(title: title) }
+    let(:book) { Book.create!(title:) }
     let(:author) { Person.create!(name: a_name) }
-    let(:a_ship) { Authorship.create!(book: book, author: author) }
+    let(:a_ship) { Authorship.create!(book:, author:) }
     let(:person) do
       who                          = PaperTrail.request.whodunnit
       PaperTrail.request.whodunnit = nil
-      p                            = Person.new(name: name)
+      p                            = Person.new(name:)
       p.save!
       PaperTrail.request.whodunnit = who
       p
