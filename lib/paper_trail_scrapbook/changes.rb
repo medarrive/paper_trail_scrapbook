@@ -62,9 +62,10 @@ module PaperTrailScrapbook
     def digest(key, values)
       old, new = values
       return if old.nil? && (new.nil? || new.eql?('')) || (old == new && !creating?)
+
       bullet_prefix = PaperTrailScrapbook.config.format == :markdown ? BULLET : ''
 
-      "#{bullet_prefix} #{key.tr('_', ' ')}: #{detailed_analysis(key, new, old)}".squeeze(" ")
+      "#{bullet_prefix} #{key.tr('_', ' ')}: #{detailed_analysis(key, new, old)}".squeeze(' ')
     end
 
     def detailed_analysis(key, new, old)
@@ -147,11 +148,11 @@ module PaperTrailScrapbook
 
     def changes
       @changes ||= if object_changes
-                      YAML.unsafe_load(object_changes)
-                        .except(*PaperTrailScrapbook.config.scrub_columns)
-                    else
-                      {}
-                    end
+                     YAML.unsafe_load(object_changes)
+                         .except(*PaperTrailScrapbook.config.scrub_columns)
+                   else
+                     {}
+                   end
     end
   end
 end
