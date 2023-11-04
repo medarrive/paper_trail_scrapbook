@@ -58,7 +58,6 @@ end
 require File.expand_path('dummy_app/config/environment', __dir__)
 require 'rspec/rails'
 require 'ffaker'
-require 'timecop'
 
 # Run any available migration
 schema_migration = ActiveRecord::Base.connection.schema_migration

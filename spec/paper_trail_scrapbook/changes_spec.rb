@@ -86,7 +86,7 @@ module PaperTrailScrapbook
 
         expect(result).to match(/discounted amount: 29612.0 added/)
         expect(result).to match(/• status: active -> issued/)
-        expect(result).to match(/other terms:   was \*removed\*/)
+        expect(result).to match(/other terms: was \*removed\*/)
       end
 
       it 'filters out unchanged values' do
